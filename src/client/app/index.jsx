@@ -25,6 +25,7 @@ import Tab from 'material-ui/lib/tabs/tab';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
 
+var Filter = require('react-filter');
 
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
