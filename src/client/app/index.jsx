@@ -10,7 +10,6 @@ import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 import Toolbar from 'material-ui/lib/toolbar/toolbar';
 import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
-import ToolbarSeparator from 'material-ui/lib/toolbar/toolbar-separator';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
 import TextField from 'material-ui/lib/text-field';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
@@ -24,8 +23,6 @@ import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
-
-var Filter = require('react-filter');
 
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
@@ -82,7 +79,7 @@ var UserList = React.createClass({
             }.bind(this)
         });
     },
-    render: function () {
+render: function () {
         return <div>
             <AppBar
                 title="Settings"
@@ -254,37 +251,63 @@ var alerts = [
         description: 'Auth Services response timeout, retrying.'
     }];
 
+
+
 var Alerts = React.createClass({
-    render: function () {
-        return <div>
-            <AppBar
-                title="Alerts"
-                iconElementLeft={<IconButton></IconButton>}/>
-                        <Card>
-                            <Toolbar>
-                                <ToolbarTitle text="System Alerts"/>
-                            </Toolbar>
-                            <TextField style={{width: '30%'}} floatingLabelText="Filter"/>
-                            <List>
+    filterList: function(event){
+        var updatedList = this.state.initialItems;
+        updatedList = updatedList.filter(function(item){
+            return item.description.toLowerCase().search(
+                    event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({items: updatedList});
+    },
+    getInitialState: function(){
+        var items = alerts;
+        return {
+            initialItems: items,
+            items: items
+        }
+    },
 
-                                {
-                                    this.props.alertList.map(function (alert) {
-                                        return <ListItem disabled={true} >
-                                            <img src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-9/24/Warning-icon.png"> </img>
-                                          <b>{alert.ts} </b>  {alert.description}
-                                        </ListItem>
-                                    })
-                                }
+    render: function(){
+        return (
+            <div>
+                <AppBar
+                    title="Alerts"
+                    iconElementLeft={<IconButton></IconButton>}/>
+                <Card>
+                    <Toolbar>
+                        <ToolbarTitle text="System Alerts"/>
+                    </Toolbar>
+                    <TextField onChange={this.filterList} style={{width: '30%'}} floatingLabelText="Filter"/>
+                    <List>
+                        <AlertList items={this.state.items}/>
 
-                            </List>
-                        </Card>
-        </div>
+                    </List>
+                </Card>
+
+            </div>
+        );
     }
 });
 
-
-
-
+var AlertList = React.createClass({
+    render: function(){
+        return (
+            <div>
+                {
+                    this.props.items.map(function(item) {
+                        return <ListItem disabled={true} >
+                            <img src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-9/24/Warning-icon.png"> </img>
+                            <b>{item.ts} </b>  {item.description}
+                        </ListItem>
+                    })
+                }
+            </div>
+        )
+    }
+});
 
 //LEFT NAV
 
@@ -293,11 +316,11 @@ var Nav = React.createClass({
         ReactDOM.render(<UserList url="https://randomuser.me/api/"/>, document.getElementById("app"));
     },
     openServices: function () {
-        ReactDOM.render(<Services/>, document.getElementById("app"));
+        ReactDOM.render(<Services/>, document.getElementById('app'));
 
     },
     openAlerts: function () {
-        ReactDOM.render(<Alerts alertList={alerts} />, document.getElementById("app"));
+        ReactDOM.render(<Alerts/>, document.getElementById("app"));
 
     },
     render: function () {
