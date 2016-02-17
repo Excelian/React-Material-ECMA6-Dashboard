@@ -158,6 +158,7 @@
 	var injectTapEventPlugin = __webpack_require__(298);
 	injectTapEventPlugin();
 
+	//STYLES
 	var styles = {
 	    block: {
 	        maxWidth: 250
@@ -165,12 +166,60 @@
 	    toggle: {
 	        marginBottom: 16
 	    },
+	    toggleContainer: {
+	        width: '30%',
+	        display: 'inline-block',
+	        textAlign: 'center',
+	        verticalAlign: 'bottom'
+	    },
 	    inlineDisplay: { display: 'inline-block' },
 	    headline: {
 	        fontSize: 24,
 	        paddingTop: 16,
 	        marginBottom: 12,
 	        fontWeight: 400
+	    },
+	    settingCardContainer: {
+	        marginTop: '20px'
+	    },
+	    settingCard: {
+	        width: '40%',
+	        margin: '10px',
+	        display: 'inline-block'
+	    },
+	    userImage: {
+	        width: '20%',
+	        display: 'inline-block',
+	        textAlign: 'center',
+	        verticalAlign: 'bottom',
+	        paddingTop: '30px',
+	        paddingLeft: '30px'
+	    },
+	    avatar: {
+	        width: '50px',
+	        height: '50px'
+	    },
+	    cardUserName: {
+	        width: '30%',
+	        display: 'inline-block',
+	        textAlign: 'center',
+	        verticalAlign: 'bottom'
+	    },
+	    userInputText: {
+	        width: '45%'
+	    },
+	    toolbarTitle: {
+	        color: 'white'
+	    },
+	    serviceCard: {
+	        width: '30%',
+	        height: '300px',
+	        margin: '10px',
+	        display: 'inline-block'
+	    },
+	    serviceImage: {
+	        width: '100%',
+	        height: '100%'
 	    }
 	};
 
@@ -221,7 +270,7 @@
 	            }),
 	            _react2.default.createElement(
 	                _card2.default,
-	                { style: { marginTop: '20px' } },
+	                { style: styles.settingCardContainer },
 	                _react2.default.createElement(
 	                    _toolbar2.default,
 	                    null,
@@ -236,21 +285,21 @@
 	                        this.state.list.map(function (usr) {
 	                            return _react2.default.createElement(
 	                                'div',
-	                                { style: { width: '40%', margin: '10px', display: 'inline-block' } },
+	                                { style: styles.settingCard },
 	                                _react2.default.createElement(
 	                                    _card2.default,
 	                                    { style: { height: '150px' } },
 	                                    _react2.default.createElement(
 	                                        'div',
 	                                        {
-	                                            style: { width: '20%', display: 'inline-block', textAlign: 'center', verticalAlign: 'bottom', paddingTop: '30px', paddingLeft: '30px' } },
-	                                        _react2.default.createElement(_avatar2.default, { style: { width: '50px', height: '50px' },
+	                                            style: styles.userImage },
+	                                        _react2.default.createElement(_avatar2.default, { style: styles.avatar,
 	                                            src: usr.results[0].user.picture.medium })
 	                                    ),
 	                                    _react2.default.createElement(
 	                                        'div',
 	                                        {
-	                                            style: { width: '30%', display: 'inline-block', textAlign: 'center', verticalAlign: 'bottom' } },
+	                                            style: styles.cardUserName },
 	                                        _react2.default.createElement(
 	                                            'h3',
 	                                            { style: { textTransform: 'uppercase' } },
@@ -260,12 +309,11 @@
 	                                    _react2.default.createElement(
 	                                        'div',
 	                                        {
-	                                            style: { width: '30%', display: 'inline-block', textAlign: 'center', verticalAlign: 'bottom' } },
+	                                            style: styles.toggleContainer },
 	                                        _react2.default.createElement(_toggle2.default, {
 	                                            label: 'Disabled',
 	                                            labelPosition: 'right',
-	                                            style: styles.toggle
-	                                        })
+	                                            style: styles.toggle })
 	                                    )
 	                                )
 	                            );
@@ -284,10 +332,10 @@
 	                _react2.default.createElement(
 	                    _cardText2.default,
 	                    null,
-	                    _react2.default.createElement(_textField2.default, { style: { width: '45%' }, floatingLabelText: 'Title' }),
-	                    _react2.default.createElement(_textField2.default, { style: { width: '45%' }, floatingLabelText: 'Email' }),
-	                    _react2.default.createElement(_textField2.default, { style: { width: '45%' }, floatingLabelText: 'First Name' }),
-	                    _react2.default.createElement(_textField2.default, { style: { width: '45%' }, floatingLabelText: 'Last Name' }),
+	                    _react2.default.createElement(_textField2.default, { style: styles.userInputText, floatingLabelText: 'Title' }),
+	                    _react2.default.createElement(_textField2.default, { style: styles.userInputText, floatingLabelText: 'Email' }),
+	                    _react2.default.createElement(_textField2.default, { style: styles.userInputText, floatingLabelText: 'First Name' }),
+	                    _react2.default.createElement(_textField2.default, { style: styles.userInputText, floatingLabelText: 'Last Name' }),
 	                    _react2.default.createElement(
 	                        _floatingActionButton2.default,
 	                        { onClick: this.addUser, secondary: true },
@@ -313,8 +361,7 @@
 	            null,
 	            _react2.default.createElement(_appBar2.default, {
 	                title: 'Services',
-	                iconElementLeft: _react2.default.createElement(_iconButton2.default, null)
-	            }),
+	                iconElementLeft: _react2.default.createElement(_iconButton2.default, null) }),
 	            _react2.default.createElement(
 	                _tabs2.default,
 	                null,
@@ -326,33 +373,36 @@
 	                        null,
 	                        _react2.default.createElement(
 	                            _card2.default,
-	                            { style: { width: '30%', height: '300px', margin: '10px', display: 'inline-block' } },
+	                            { style: styles.serviceCard },
 	                            _react2.default.createElement(
 	                                _toolbar2.default,
 	                                { style: { backgroundColor: 'rgb(198,40,40)' } },
-	                                _react2.default.createElement(_toolbarTitle2.default, { style: { color: 'white' }, text: 'Trade Services' })
+	                                _react2.default.createElement(_toolbarTitle2.default, { style: styles.toolbarTitle, text: 'Trade Services' })
 	                            ),
-	                            _react2.default.createElement('img', { style: { width: '100%', height: '100%' }, src: 'http://docs.cacti.net/_media/template:graph:cisco:cisco_cpu_usage.png' })
+	                            _react2.default.createElement('img', { style: styles.serviceImage,
+	                                src: 'http://docs.cacti.net/_media/template:graph:cisco:cisco_cpu_usage.png' })
 	                        ),
 	                        _react2.default.createElement(
 	                            _card2.default,
-	                            { style: { width: '30%', height: '300px', margin: '10px', display: 'inline-block' } },
+	                            { style: styles.serviceCard },
 	                            _react2.default.createElement(
 	                                _toolbar2.default,
 	                                { style: { backgroundColor: 'rgb(13,71,161)' } },
-	                                _react2.default.createElement(_toolbarTitle2.default, { style: { color: 'white' }, text: 'Auth Services' })
+	                                _react2.default.createElement(_toolbarTitle2.default, { style: styles.toolbarTitle, text: 'Auth Services' })
 	                            ),
-	                            _react2.default.createElement('img', { style: { width: '100%', height: '100%' }, src: 'http://docs.cacti.net/_media/template:graph:cisco:cisco_cpu_usage.png' })
+	                            _react2.default.createElement('img', { style: styles.serviceImage,
+	                                src: 'http://docs.cacti.net/_media/template:graph:cisco:cisco_cpu_usage.png' })
 	                        ),
 	                        _react2.default.createElement(
 	                            _card2.default,
-	                            { style: { width: '30%', height: '300px', margin: '10px', display: 'inline-block' } },
+	                            { style: styles.serviceCard },
 	                            _react2.default.createElement(
 	                                _toolbar2.default,
 	                                { style: { backgroundColor: 'rgb(176,190,197)' } },
-	                                _react2.default.createElement(_toolbarTitle2.default, { style: { color: 'white' }, text: 'User Services' })
+	                                _react2.default.createElement(_toolbarTitle2.default, { style: styles.toolbarTitle, text: 'User Services' })
 	                            ),
-	                            _react2.default.createElement('img', { style: { width: '100%', height: '100%' }, src: 'http://docs.cacti.net/_media/template:graph:cisco:cisco_cpu_usage.png' })
+	                            _react2.default.createElement('img', { style: styles.serviceImage,
+	                                src: 'http://docs.cacti.net/_media/template:graph:cisco:cisco_cpu_usage.png' })
 	                        )
 	                    )
 	                ),
@@ -368,7 +418,7 @@
 	                            _react2.default.createElement(
 	                                _toolbar2.default,
 	                                { style: { backgroundColor: 'rgb(13,71,161)' } },
-	                                _react2.default.createElement(_toolbarTitle2.default, { style: { color: 'white' }, text: 'WCX1234565' })
+	                                _react2.default.createElement(_toolbarTitle2.default, { style: styles.toolbarTitle, text: 'WCX1234565' })
 	                            ),
 	                            _react2.default.createElement(
 	                                _cardText2.default,
@@ -493,7 +543,8 @@
 	                    { disabled: true },
 	                    _react2.default.createElement(
 	                        'img',
-	                        { src: 'http://icons.iconarchive.com/icons/custom-icon-design/flatastic-9/24/Warning-icon.png' },
+	                        {
+	                            src: 'http://icons.iconarchive.com/icons/custom-icon-design/flatastic-9/24/Warning-icon.png' },
 	                        ' '
 	                    ),
 	                    _react2.default.createElement(
@@ -502,7 +553,7 @@
 	                        item.ts,
 	                        ' '
 	                    ),
-	                    '  ',
+	                    ' ',
 	                    item.description
 	                );
 	            })
@@ -511,7 +562,6 @@
 	});
 
 	//LEFT NAV
-
 	var Nav = _react2.default.createClass({
 	    displayName: 'Nav',
 

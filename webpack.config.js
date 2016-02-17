@@ -10,7 +10,6 @@ var APP_DIR = path.resolve(__dirname, 'src/client/app');
 var config = {
     entry: [APP_DIR + '/index.jsx'],
     resolve: {
-        root: path.resolve(APP_DIR),
         extensions: ['', '.js', '.jsx']
     },
     output: {
@@ -20,8 +19,7 @@ var config = {
     module : {
         loaders : [
             {
-                test : /\.jsx?/,
-                include : APP_DIR,
+                test: /\.jsx$/,
                 loader : 'babel'
             },
             {
