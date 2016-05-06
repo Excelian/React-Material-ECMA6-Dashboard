@@ -1,0 +1,81 @@
+@import '../variables.scss';
+
+$brand-color: #555555;
+
+.root {
+  background: #ffffff;
+  color: #fff;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 5px 0;
+  max-width: $max-content-width;
+}
+
+.brand {
+  color: color($brand-color lightness(+10%));
+  text-decoration: none;
+}
+
+
+.bannerTitle {
+  margin: 0;
+  padding: 0px;
+}
+@media (min-height: 670px) {
+
+  .brand {
+    font-size: 1.75em; /* ~28px */
+  }
+
+  .bannerTitle {
+    font-weight: normal;
+    font-size: 4em;
+    line-height: 1em;
+  }
+
+
+  .bannerDesc {
+    padding: 0;
+    color: rgba(99, 99, 99, .5);
+    font-size: 1.25em;
+    margin: 0;
+  }
+}
+
+@media(max-height: 670px){
+  .brand {
+    font-size: 1em; /* ~28px */
+  }
+
+  .bannerTitle {
+    font-weight: normal;
+    font-size: 2em;
+    line-height: 1em;
+  }
+
+
+  .bannerDesc {
+    padding: 0;
+    color: rgba(99, 99, 99, .5);
+    font-size: .25em;
+    margin: 0;
+  }
+}
+
+
+
+.brandTxt {
+  margin-left: 0px;
+}
+
+.nav {
+  float: right;
+  margin-top: 6px;
+}
+
+.banner {
+  text-align: left;
+  margin-left: 20px;
+}

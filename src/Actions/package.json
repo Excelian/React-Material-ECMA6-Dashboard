@@ -1,0 +1,8 @@
+{
+  "name": "Actions",
+  "version": "1.0.0",
+  "main": "Actions.js",
+  "dependencies": {
+    "jquery": "^2.2.3"
+  }
+}

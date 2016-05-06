@@ -2,11 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Avatar from 'material-ui/lib/avatar';
 import Card from 'material-ui/lib/card/card';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardMedia from 'material-ui/lib/card/card-media';
-import CardTitle from 'material-ui/lib/card/card-title';
-import FlatButton from 'material-ui/lib/flat-button';
+
 import CardText from 'material-ui/lib/card/card-text';
 import Toolbar from 'material-ui/lib/toolbar/toolbar';
 import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
@@ -114,18 +110,7 @@ var UserList = React.createClass({
         });
     },
     componentDidMount: function () {
-        $.ajax({
-            url: this.props.url,
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-                allUsers.push(data);
-                this.setState({list: allUsers});
-            }.bind(this),
-            error: function (xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });
+        
     },
     render: function () {
         return <div>
