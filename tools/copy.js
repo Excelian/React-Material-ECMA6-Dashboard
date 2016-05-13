@@ -20,7 +20,7 @@ async function copy({ watch } = {}) {
   const ncp = Promise.promisify(require('ncp'));
 
   await Promise.all([
-    ncp('src/public', 'build/public'),
+    // ncp('src/public', 'build/public'),
     ncp('src/content', 'build/content'),
     ncp('package.json', 'build/package.json'),
   ]);

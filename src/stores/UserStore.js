@@ -1,59 +1,83 @@
-import Reflux from 'reflux';
-import actions from '../Actions';
 import React from 'react';
 import $ from 'jquery';
+import emitter from '../Actions/Actions';
+import {CHANGE_EVENT} from '../Actions/Actions';
 
-var {AsyncStorage} = React;
 
 const USERKEY = "userList";
+let userList = [];
 
-var userStore = Reflux.createStore({
-  init(){
-    "use strict";
-    this.listenTo(actions.UserList, this.onUserList)
-    this.loadUserList();
-    this.users = [];
-    this.emit();
-  },
+function addUsers(user) {
+  userList.push(user);
+  emitter.emit(CHANGE_EVENT);
+  
+  alert("Add Users called in UserStore");
+}
+var listener = emitter.addListener(CHANGE_EVENT, addUsers);
 
-  emit(){
-    "use strict";
+let dataSuccess = new function (data) {
+  console.log("Loaded Data");
+  console.log(data);
+}
 
-  },
+let loadUsers = function () {
+  console.log("trying to load users");
+  try {
+   return $.get({
+      url: "https://randomuser.me/api/",
+      dataType: 'json'
 
-  async _loadUserList(){
-    "use strict";
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: false,
-      success: function (data) {
-        this.users.push(data);
-        this.emit();
-      }.bind(this),
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
-
-  async _writeUserList(){
-    "use strict";
-    try {
-      await AsyncStorage.setItem(USERKEY, JSON.stringify(this.users));
-    }
-    catch (error) {
-      console.error("Error writing to async Storage");
-    }
-  },
+    }).promise();
 
 
-  onUserList(data)
-  {
-    //doSomething
+  }
+  catch
+    (error) {
+    console.log("Probably rendered server side...")
   }
 
+}
 
-});
+// var users = distinct(loadUsers());
+// let userStore = Rx.Observable.fromCallback(loadUsers);
 
-export default userStore;
+// let response = userStore();
+// response.subscribe(
+//   function (next) {
+//     console.log(next)
+//   },
+//   function (error) {
+//     console.log(error)
+//   },
+//   function () {
+//     console.log("complete")
+//   }
+// )
+
+
+// emitter.addListener('loadUsers', (args)=>{
+//   console.log("received event from view");
+// }, )
+
+//
+// });
+
+
+// async _writeUserList(){
+//   "use strict";
+//   try {
+//     await AsyncStorage.setItem(USERKEY, JSON.stringify(this.users));
+//   }
+//   catch (error) {
+//     console.error("Error writing to async Storage");
+//   }
+// },
+
+//
+// onUserList(data)
+// {
+//   //doSomething
+// }
+
+
+export default null;

@@ -78,14 +78,17 @@ async function start() {
       // For other settings see
       // https://webpack.github.io/docs/webpack-dev-middleware
     });
-    const hotMiddlewares = bundler
-      .compilers
+    const hotMiddlewares = bundler.compilers
       .filter(compiler => compiler.options.target !== 'node')
       .map(compiler => webpackHotMiddleware(compiler));
 
+    console.log("About to start server...");
+
     let handleServerBundleComplete = () => {
+      console.log("starting Server");
       runServer((err, host) => {
         if (!err) {
+          console.log("Have started server - no errors so far.")
           const bs = Browsersync.create();
           bs.init({
             ...(DEBUG ? {} : { notify: false, ui: false }),
@@ -100,6 +103,9 @@ async function start() {
             files: ['build/content/**/*.*'],
           }, resolve);
           handleServerBundleComplete = runServer;
+        }
+        else{
+          console.log("There was an error:"+ err);
         }
       });
     };

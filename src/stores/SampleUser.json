@@ -1,0 +1,47 @@
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": {
+        "title": "ms",
+        "first": "eugenia",
+        "last": "gimenez"
+      },
+      "location": {
+        "street": "6615 calle del barquillo",
+        "city": "la coruña",
+        "state": "navarra",
+        "postcode": 17623
+      },
+      "email": "eugenia.gimenez@example.com",
+      "login": {
+        "username": "smallwolf652",
+        "password": "aurora",
+        "salt": "037wv5qH",
+        "md5": "7fc104472d6b33d81f95b6ff6ec93ee5",
+        "sha1": "07a4dd8213fa44fa29904135ae21416c39d72eaf",
+        "sha256": "341f301c1bd532951a8eee033f296e05df8d1b6af8de5608b41f319e2f09425a"
+      },
+      "registered": 1371609630,
+      "dob": 1375435236,
+      "phone": "926-150-624",
+      "cell": "634-645-137",
+      "id": {
+        "name": "DNI",
+        "value": "46354408-F"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/11.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/11.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/11.jpg"
+      },
+      "nat": "ES"
+    }
+  ],
+  "info": {
+    "seed": "1ba45765365d1d00",
+    "results": 1,
+    "page": 1,
+    "version": "1.0"
+  }
+}

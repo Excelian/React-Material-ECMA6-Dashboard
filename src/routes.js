@@ -14,7 +14,7 @@ import App from './components/App';
 import ContentPage from './components/ContentPage';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
-import Dash from './components/UserList/UserList';
+import Page from './components/Page';
 
 const router = new Router(on => {
   on('*', async (state, next) => {
@@ -29,7 +29,13 @@ const router = new Router(on => {
   // on('/gallery', async() => <Gallery />);
   //
   // on('/register', async () => <RegisterPage />);
-  on  ('/dash', async() => <Dash />);
+  on  ('/dash/*', async(state, next) => {
+    "use strict";
+    const pageComponent = await next();
+    return pageComponent && <Page context={state.context}>{pageComponent}</Page>
+  });
+
+  on ('/dash/settings', async()=>{ return <div>Hello settings</div>});
 
   on('*', async (state) => {
     const query = `/graphql?query={content(path:"${state.path}"){path,title,content,component}}`;

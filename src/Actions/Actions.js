@@ -1,8 +1,13 @@
-import  reflux from 'reflux';
+import {EventEmitter} from 'fbemitter';
+
+export const CHANGE_EVENT = 'change';
+export const ADD_USER_EVENT = 'addUser';
+const emitter = new EventEmitter();
+var changeHandler = function () {
+  console.log("change event triggered");
+};
+
+emitter.addListener(CHANGE_EVENT,changeHandler);
 
 
-var Actions = reflux.createActions({"UserList":{children:["completed", "failed"]}});
-
-
-
-export default Actions;
+export default emitter ;
