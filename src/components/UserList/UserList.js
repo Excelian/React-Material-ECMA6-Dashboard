@@ -66,7 +66,7 @@ class UserList extends Component {
 
   addUser() {
 
-    alert("Add User");
+    console.log("Add User");
     Actions.emit(CHANGE_EVENT);
 
     // $.ajax({

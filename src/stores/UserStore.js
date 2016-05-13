@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import emitter from '../Actions/Actions';
 import {CHANGE_EVENT} from '../Actions/Actions';
+import {ADD_USER_EVENT} from '../Actions/Actions';
 
 
 const USERKEY = "userList";
@@ -10,15 +11,12 @@ let userList = [];
 function addUsers(user) {
   userList.push(user);
   emitter.emit(CHANGE_EVENT);
-  
+
   alert("Add Users called in UserStore");
 }
-var listener = emitter.addListener(CHANGE_EVENT, addUsers);
+var listener = emitter.addListener(ADD_USER_EVENT, addUsers);
 
-let dataSuccess = new function (data) {
-  console.log("Loaded Data");
-  console.log(data);
-}
+
 
 let loadUsers = function () {
   console.log("trying to load users");
